@@ -25,13 +25,18 @@ app.get("/api/hello", function (req, res) {
 });
 
 var date = new Date(2015-12-25).getTime();
-//console.log(date);
-var regex = /\d\d\d\d-\d\d-\d\d/
-regex.test('2015-12-25');
+
 
 // API timestamp endpoint
 app.get("/api/timestamp/:date_string?", function(req, res) {
   var input = req.params.date_string;
+  if (/^\d+$/.test(input)) {
+    input = parseInt(input);
+  }
+  
+  var date = new Date(input);
+  
+  var result = 
   
 })
 

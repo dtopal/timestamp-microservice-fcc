@@ -24,12 +24,15 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-var date = new Date('2015-12-56').getTime();
-console.log(date);
+var date = new Date(2015-12-25).getTime();
+//console.log(date);
+var regex = /\d\d\d\d-\d\d-\d\d/
+regex.test('2015-12-25');
 
 // API timestamp endpoint
 app.get("/api/timestamp/:date_string?", function(req, res) {
-  console.log(new Date(req.params.date_string).toString())
+  var input = req.params.date_string;
+  
 })
 
 // listen for requests :)

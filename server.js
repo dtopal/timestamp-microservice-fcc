@@ -30,7 +30,7 @@ var date = new Date(2015-12-25).getTime();
 // API timestamp endpoint
 app.get("/api/timestamp/:date_string?", function(req, res) {
   var input = req.params.date_string;
-  console.log(input);
+  //console.log(input);
   var date;
   
   if (/^\d+$/.test(input)) {
@@ -42,9 +42,14 @@ app.get("/api/timestamp/:date_string?", function(req, res) {
     date = new Date(input);
   };
   
-  res.json({ "unix": date.getTime(), "utc": date.toUTCString() })
+  //deal with invalid dates, should return { "error" : "Invalid Date"}
+  if (date.toString() === "Invalid Date") {
+    res.json({ "error": "Invalid Date" });
+  } else {
+    res.json({ "unix": date.getTime(), "utc": date.toUTCString() })
+  };
   
-})
+});
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {

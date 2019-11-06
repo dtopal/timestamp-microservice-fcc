@@ -27,6 +27,11 @@ app.get("/api/hello", function (req, res) {
 var date = new Date(1450137600).toString();
 console.log(date);
 
+// API timestamp endpoint
+app.get("/api/timestamp/:date_string?", function(req, res) {
+  console.log(new Date(parseInt(req.params.date_string)))
+})
+
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);

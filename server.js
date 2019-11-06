@@ -30,13 +30,19 @@ var date = new Date(2015-12-25).getTime();
 // API timestamp endpoint
 app.get("/api/timestamp/:date_string?", function(req, res) {
   var input = req.params.date_string;
+  console.log(input);
+  var date;
+  
   if (/^\d+$/.test(input)) {
     input = parseInt(input);
   }
+  if (typeof input === "undefined") {
+    date = new Date();
+  } else {
+    date = new Date(input);
+  };
   
-  var date = new Date(input);
-  
-  var result = 
+  res.json({ "unix": date.getTime(), "utc": date.toUTCString() })
   
 })
 
